@@ -15,6 +15,7 @@ async function showWeather(city) {
 	try {
 		const response = await fetch(url)
 		const data = await response.json()
+		console.log(data)
 		handleWeatherData(data)
 	} catch (error) {
 		console.log('Error:', error)
@@ -38,6 +39,7 @@ function handleWeatherData(data) {
         <img class="card-img" src="${data.current.condition.icon}" alt="Weather">
       </div>
       <div class="card-description">${data.current.condition.text}</div>
+      <div class="card-description">Local time: ${data.location.localtime}</div>
     </div>`
 
 		header.insertAdjacentHTML('afterend', html)
